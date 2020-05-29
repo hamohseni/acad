@@ -1,5 +1,4 @@
 <?php
-//hola
     include_once 'entidades/persona_has_permiso.php'; 
     if(($this->permisos)==0){
         exit('Acceso denegado por permiso');

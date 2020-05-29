@@ -1,5 +1,4 @@
 <?php
-//hola
 define('URL','http://localhost/acad/');
 
 define('HOST','localhost');

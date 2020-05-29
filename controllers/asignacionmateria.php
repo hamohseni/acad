@@ -1,5 +1,4 @@
 <?php
-//hola
 class asignacionmateria extends Controller{
 
     function __construct(){

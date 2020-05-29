@@ -1,5 +1,5 @@
 <?php
-//hola
+
 class Model{
 
     function __construct(){

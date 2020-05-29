@@ -1,5 +1,5 @@
 <?php
-//hola
+
 include_once 'entidades/persona.php';
 
 class mainModel extends Model{

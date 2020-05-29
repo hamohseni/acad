@@ -1,5 +1,5 @@
 <?php
-//hola
+
 include_once 'entidades/cargo.php';
 class personasModel extends Model{
 

@@ -1,5 +1,4 @@
 <?php
-//hola
 class Asignatura{
 
     public $id;

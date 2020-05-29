@@ -1,5 +1,4 @@
 <?php
-//hola
     $final='
     <div class="row">
                             <div class="col-md-12">

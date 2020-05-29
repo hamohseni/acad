@@ -1,5 +1,4 @@
 <?php
-//hola
 class distribucion extends Controller{
 
     function __construct(){

@@ -1,5 +1,4 @@
 <?php
-//hola
 class Ano_has_Periodo{
 
     public $id;

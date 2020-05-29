@@ -1,5 +1,4 @@
 <?php
-//hola
 class Controller{
 
     private $sesion;

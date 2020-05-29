@@ -1,5 +1,4 @@
 <?php
-//hola
 class Curso_has_Grado{
 
     public $id;

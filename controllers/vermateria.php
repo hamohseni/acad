@@ -1,5 +1,4 @@
 <?php
-//hola
 include_once 'libs/sesion.php';
 class verMateria extends Controller{
 

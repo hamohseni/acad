@@ -1,5 +1,5 @@
 <?php
-//hola
+
 include_once 'entidades/grado.php';
 include_once 'entidades/asignatura.php';
 include_once 'entidades/grado_has_asignatura.php';

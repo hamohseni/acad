@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-//hola
 <html lang="en">
 <head>
     <meta charset="UTF-8">

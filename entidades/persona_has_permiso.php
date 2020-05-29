@@ -1,5 +1,4 @@
 <?php
-//hola
 class Persona_has_Permiso{
 
     public $id;

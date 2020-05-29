@@ -1,5 +1,5 @@
 <?php
-//hola
+
 class cargosModel extends Model{
 
     public function __construct(){
