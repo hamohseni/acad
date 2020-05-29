@@ -1,0 +1,184 @@
+Primera Pregunta:
+Para realizar este ejercicio toca recorrer los hombres, por lo que en este
+caso el primer hombre está casado con la mujer 1. Tenemos que ver si las
+mujeres 2 y 4 no lo prefieran antes que sus actuales maridos. En el caso 
+de la segunda mujer, vemos que el prefiere a su marido (3) antes que al 1
+pero la mujer 4 prefiere al hombre 1 antes que su marido (4). Por lo que 
+aqui está la inestabilidad y no es necesario revisar mas casos,dado que en 
+general ya es inestable.
+
+Segunda Pregunta:
+Rouge people son aquellos que son inestables.
+for m := to n do
+	for each w such that m prefers w to pM(m) do
+		if w prefers m to pM(w) them
+		begin
+			display rogue people (m,w)
+		end
+		
+		
+Tercera Pregunta:
+Para realizar este ejercicio, tanto los hombres como las mujeres no 
+deben tener ningun compromiso. Por lo tanto quedaria así.
+El hombre 1 propone a la mujer 2 y este acepta.
+El hombre 2 propone a la mujer 3 y este acepta.
+El hombre 2 propone a la mujer 2 pero este ya tiene marido, pero, la 
+mujer 2 prefiere al hombre 3 mas que al hombre 1 por lo que se queda con
+el hombre 3 y el hombre uno queda libre.
+El hombre 4 propone a la mujer 4 y este acepta. 
+
+Aun nos falta el hombre uno, por lo que le propone al siguiente que seria
+la mujer 4, pero la mujer 4 ya tiene marido (hombre 4), pero ella prefiere
+al hombre 1, por lo que se queda con el.
+
+y nos faltaria aun el hombre 4, por lo cual le propone a la mujer 1 y este 
+acepta.
+El emparejamiento queda asi:
+(1,4), (2,3), (3,2), (4,1);
+
+Cuarta Pregunta: 
+El primer hombre propone a la segunda mujer y acepta
+El segundo hombre propone a la tercera mujer y acepta
+El tercer hombre propone a la segunda mujer y como ella prefiere al
+hombre 3 antes que al 1 se queda con él. El hombre uno queda libre.
+El hombre uno le propone a la mujer cuatro y esta acepta.
+el hombre cuatro le propone a la mujer 4, pero ella sigue prefiriendo al 
+hombre 1, por lo que el hombre 4 propone a la mujer 1 y ella acepta.
+El emparejamiento queda asi:
+(1,4), (2,3), (3,2), (4,1);
+
+Quinta Pregunta:
+Primer Caso:
+
+Peor entrada: 
+
+Men:
+1 = (4,3,2,1)
+2 = (4,3,2,1)
+3 = (4,3,2,1)
+4 = (4,3,2,1)
+
+Women: 
+1 = (4,3,2,1)= 1
+2 = (4,3,2,1)= 2
+3 = (4,3,2,1)= 3
+4 = (4,3,2,1)= 4
+             = 10
+Por lo que el peor caso gasta 10 pasos, es decir para n elementos se gastara
+n(n+1)/2  pasos.
+
+Mejor Caso:
+
+Men:
+1 = (4,3,2,1)
+2 = (4,3,2,1)
+3 = (4,3,2,1)
+4 = (4,3,2,1)
+
+Women: 
+1 = (4,3,2,1)= 1
+2 = (4,3,2,1)= 1
+3 = (4,3,2,1)= 1
+4 = (4,3,2,1)= 1
+             = 4
+
+En este caso se demora 4 pasos, pero la forma general seria para n elementos
+tarda n pasos.
+
+Segundo Caso:
+
+Peor entrada: 
+
+Men:
+1 = (1,2,3,4)
+2 = (1,2,3,4)
+3 = (1,2,3,4)
+4 = (1,2,3,4)
+
+Women: 
+1 = (1,2,3,4)
+2 = (1,2,3,4)
+3 = (1,2,3,4)
+4 = (1,2,3,4)
+
+Por lo que el peor caso gasta 4 pasos, es decir para n elementos se gastara
+4  pasos.
+
+Mejor Caso:
+
+Men:
+1 = (1,2,3,4)
+2 = (1,2,3,4)
+3 = (1,2,3,4)
+4 = (1,2,3,4)
+
+Women: 
+1 = (1,2,3,4)
+2 = (1,2,3,4)
+3 = (1,2,3,4)
+4 = (1,2,3,4)
+
+En este caso se demora solo 1 paso, pero la forma general seria para n elementos
+tarda 1 paso.
+
+Tercer Caso:
+
+Es el mismo que el primero.
+
+Peor entrada: 
+
+Men:
+1 = (4,3,2,1)
+2 = (4,3,2,1)
+3 = (4,3,2,1)
+4 = (4,3,2,1)
+
+Women: 
+1 = (4,3,2,1)= 1
+2 = (4,3,2,1)= 2
+3 = (4,3,2,1)= 3
+4 = (4,3,2,1)= 4
+             = 10
+Por lo que el peor caso gasta 10 pasos, es decir para n elementos se gastara
+n(n+1)/2  pasos.
+
+Mejor Caso:
+
+Men:
+1 = (4,3,2,1)
+2 = (4,3,2,1)
+3 = (4,3,2,1)
+4 = (4,3,2,1)
+
+Women: 
+1 = (4,3,2,1)= 1
+2 = (4,3,2,1)= 1
+3 = (4,3,2,1)= 1
+4 = (4,3,2,1)= 1
+             = 4
+
+En este caso se demora 4 pasos, pero la forma general seria para n elementos
+tarda n pasos.
+
+Cuarto Caso:
+
+Peor caso:
+
+Men:
+1 = (1,2,3,4)
+2 = (2,3,4,1)
+3 = (3,4,1,2)
+4 = (4,3,2,1)
+
+Women: 
+1 = (1,2,3,4)
+2 = (2,3,4,1)
+3 = (3,4,1,2)
+4 = (4,3,2,1)
+
+Se demoraria 10 pasos.
+
+Mejor Caso:
+
+El orden aca no importa y por lo tanto no habra dos hombres que quieran 
+a una misma mujer. Se demora 4 pasos es decir para n elementos tarda n pasos
