@@ -1,5 +1,5 @@
 <?php
-
+//hola
 
 include_once 'libs/sesion.php';
 class Personas extends Controller{

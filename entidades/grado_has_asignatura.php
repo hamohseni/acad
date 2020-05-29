@@ -1,5 +1,5 @@
 <?php
-
+//hola
 class Grado_has_Asignatura{
 
     public $id;

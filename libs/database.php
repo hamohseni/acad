@@ -1,5 +1,5 @@
 <?php
-
+//hola
 class Database{
 
     private $host;
