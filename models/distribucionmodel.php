@@ -142,6 +142,20 @@ class distribucionModel extends Model{
             return [];
         }
     }
+    public function getpermiso($datos){
+        try{
+
+            $query = $this->db->connect()->prepare("SELECT * FROM Persona NATURAL JOIN Permiso NATURAL JOIN Persona_has_Permiso WHERE per_identificacion=:identificacion AND perm_id=5");
+            $query->execute(['identificacion' => $datos]);
+            $row = $query->fetch(PDO::FETCH_OBJ);
+            $result = $row->per_perm_estado;
+            return $result;
+            echo $result;
+        }catch(PDOException $e){
+            echo "no se pudo";
+            return [];
+        }
+    }
 
 }
 

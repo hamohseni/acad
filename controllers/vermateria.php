@@ -12,9 +12,13 @@ class verMateria extends Controller{
         $this->view->mensaje="";
         $this->view->materias = [];
         $this->view->asignaturas = [];
+        $this->view->permisos = [];
         
     }
     function render(){
+        $sesiones = $this->sesion->get('usuario');
+        $permisos = $this->model->getpermiso($sesiones);
+        $this->view->permisos = $permisos;
         $materias = $this->model->getmateria();
         $this->view->materias = $materias;
         $asignaturas = $this->model->getasignatura();

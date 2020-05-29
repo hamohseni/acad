@@ -1,3 +1,9 @@
+<?php
+    include_once 'entidades/persona_has_permiso.php'; 
+    if(($this->permisos)==0){
+        exit('Acceso denegado');
+    }else{
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,32 +36,35 @@
             $ano = new Ano();
             $ano = $row; 
     ?>
-    <li>
-        <?php
-            echo $ano->nombre; 
-        ?>
-        <ol>
+        <li>
             <?php
-                include_once 'entidades/ano_has_periodo.php';
-                foreach($this->anos_has_periodos as $row ){
-                    $ano_has_periodo = new Ano_has_periodo();
-                    $ano_has_periodo = $row; 
-                    if($ano_has_periodo->ano == $ano->id ){
+                echo $ano->nombre; 
             ?>
-            <li>
+            <ol>
                 <?php
-                        echo $ano_has_periodo->nombre; 
+                    include_once 'entidades/ano_has_periodo.php';
+                    foreach($this->anos_has_periodos as $row ){
+                        $ano_has_periodo = new Ano_has_periodo();
+                        $ano_has_periodo = $row; 
+                        if($ano_has_periodo->ano == $ano->id ){
                 ?>
-            </li>
-            <?php
+                <li>
+                    <?php
+                            echo $ano_has_periodo->nombre; 
+                    ?>
+                </li>
+                <?php
+                        }
                     }
-                }
-            ?>
-        </ol>
-    </li>
-    <?php
-        }
-    ?>
-</ul>
+                ?>
+            </ol>
+        </li>
+        <?php
+            }
+        ?>
+    </ul>
 </body>
 </html>
+<?php
+    }
+?>

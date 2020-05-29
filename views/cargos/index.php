@@ -1,3 +1,9 @@
+<?php
+    include_once 'entidades/persona_has_permiso.php'; 
+    if(($this->permisos)==0){
+        exit('Acceso denegado');
+    }else{
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,3 +20,6 @@
     </form>
 </body>
 </html>
+<?php
+    }
+?>

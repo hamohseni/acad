@@ -1,3 +1,9 @@
+<?php
+    include_once 'entidades/persona_has_permiso.php'; 
+    if(($this->permisos)==0){
+        exit('Acceso denegado');
+    }else{
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,58 +100,60 @@
         <br>
         <input type="submit" name="crear" value="Crear"></p> 
     </form>
-<ul>
-    <?php
-        include_once 'entidades/nivel.php';
-        foreach($this->niveles as $row){
-            $nivel = new Nivel();
-            $nivel = $row; 
-    ?>
-    <li>
+    <ul>
         <?php
-            echo $nivel->nombre; 
+            include_once 'entidades/nivel.php';
+            foreach($this->niveles as $row){
+                $nivel = new Nivel();
+                $nivel = $row; 
         ?>
-        <ol>
+        <li>
             <?php
-                include_once 'entidades/grado.php';
-                foreach($this->grados as $row ){
-                    $grado = new Grado();
-                    $grado = $row; 
-                    if($grado->nivel == $nivel->id ){
+                echo $nivel->nombre; 
             ?>
-            <li>
+            <ol>
                 <?php
-                        echo $grado->nombre; 
+                    include_once 'entidades/grado.php';
+                    foreach($this->grados as $row ){
+                        $grado = new Grado();
+                        $grado = $row; 
+                        if($grado->nivel == $nivel->id ){
                 ?>
-                <ul>
+                <li>
                     <?php
-                        include_once 'entidades/curso_has_grado.php';
-                        foreach($this->cursos_has_grados as $row){
-                            $curso_has_grado = new curso_has_grado();
-                            $curso_has_grado = $row; 
-                            if($curso_has_grado->grado == $grado->id ){
+                            echo $grado->nombre; 
                     ?>
-                    <li>    
+                    <ul>
                         <?php
-                            echo $curso_has_grado->nombre; 
+                            include_once 'entidades/curso_has_grado.php';
+                            foreach($this->cursos_has_grados as $row){
+                                $curso_has_grado = new curso_has_grado();
+                                $curso_has_grado = $row; 
+                                if($curso_has_grado->grado == $grado->id ){
                         ?>
-                    </li>
-                    <?php
-                            }
-                        } 
-                    ?>
-                </ul>
-            </li>
-            <?php
+                        <li>    
+                            <?php
+                                echo $curso_has_grado->nombre; 
+                            ?>
+                        </li>
+                        <?php
+                                }
+                            } 
+                        ?>
+                    </ul>
+                </li>
+                <?php
+                        }
                     }
-                }
-            ?>
-        </ol>
-    </li>
-    <?php
-        }
-    ?>
-</ul>
-    
+                ?>
+            </ol>
+        </li>
+        <?php
+            }
+        ?>
+    </ul>
 </body>
 </html>
+<?php
+    }
+?>

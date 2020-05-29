@@ -1,14 +1,24 @@
 <?php
+include_once 'libs/sesion.php';
 class anoacademico extends Controller{
 
     function __construct(){
         parent:: __construct();
+        $this->sesion = new Sesion();
+        $this->sesion->init();
+        if($this->sesion->getStatus()=== 1 || empty($this->sesion->get('usuario'))){
+            exit('Acceso denegado');
+        }
         $this->view->mensaje="";
         $this->view->anos = [];
         $this->view->periodos = [];
         $this->view->anos_has_periodos = [];
+        $this->view->permisos = [];
     }
     function render(){
+        $sesiones = $this->sesion->get('usuario');
+        $permisos = $this->model->getpermiso($sesiones);
+        $this->view->permisos = $permisos;
         $anos = $this->model->getano();
         $this->view->anos = $anos;
         $periodos = $this->model->getperiodo();

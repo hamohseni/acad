@@ -1,15 +1,24 @@
 <?php
+include_once 'libs/sesion.php';
 class distribucion extends Controller{
 
     function __construct(){
         parent:: __construct();
+        $this->sesion = new Sesion();
+        $this->sesion->init();
+        if($this->sesion->getStatus()=== 1 || empty($this->sesion->get('usuario'))){
+            exit('Acceso denegado');
+        }
         $this->view->mensaje="";
         $this->view->niveles = [];
         $this->view->grados = [];
         $this->view->cursos = [];
-        $this->view->cursos_has_grados = [];
+        $this->view->permisos=[];
     }
     function render(){
+        $sesiones = $this->sesion->get('usuario');
+        $permisos = $this->model->getpermiso($sesiones);
+        $this->view->permisos = $permisos;
         $niveles = $this->model->getnivel();
         $this->view->niveles = $niveles;
         $grados = $this->model->getgrado();

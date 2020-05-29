@@ -1,5 +1,5 @@
 <?php
-
+include_once 'libs/sesion.php';
 include_once 'libs/sesion.php';
 class Cargos extends Controller{
 
@@ -11,10 +11,13 @@ class Cargos extends Controller{
         if($this->sesion->getStatus()=== 1 || empty($this->sesion->get('usuario'))){
             exit('Acceso denegado');
         }
-        $this->view->mensaje="";        
+        $this->view->mensaje="";    
+        $this->view->permisos=[];    
     }
     public function render(){
-        
+        $sesiones = $this->sesion->get('usuario');
+        $permisos = $this->model->getpermiso($sesiones);
+        $this->view->permisos = $permisos;
         $this->view->render('cargos/index');
     }
 

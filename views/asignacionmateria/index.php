@@ -1,5 +1,10 @@
+<?php
+    include_once 'entidades/persona_has_permiso.php'; 
+    if(($this->permisos)==0){
+        exit('Acceso denegado');
+    }else{
+?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,32 +51,35 @@
             $grado = new Grado();
             $grado = $row; 
     ?>
-    <li>
-        <?php
-            echo $grado->nombre; 
-        ?>
-        <ol>
+        <li>
             <?php
-                include_once 'entidades/grado_has_asignatura.php';
-                foreach($this->grados_has_asignaturas as $row ){
-                    $grado_has_asignatura = new grado_has_asignatura();
-                    $grado_has_asignatura = $row; 
-                    if($grado_has_asignatura->grado == $grado->id ){
+                echo $grado->nombre; 
             ?>
-            <li>
+            <ol>
                 <?php
-                        echo $grado_has_asignatura->nombre; 
+                    include_once 'entidades/grado_has_asignatura.php';
+                    foreach($this->grados_has_asignaturas as $row ){
+                        $grado_has_asignatura = new grado_has_asignatura();
+                        $grado_has_asignatura = $row; 
+                        if($grado_has_asignatura->grado == $grado->id ){
                 ?>
-            </li>
-            <?php
+                <li>
+                    <?php
+                            echo $grado_has_asignatura->nombre; 
+                    ?>
+                </li>
+                <?php
+                        }
                     }
-                }
-            ?>
-        </ol>
-    </li>
-    <?php
-        }
-    ?>
-</ul>
+                ?>
+            </ol>
+        </li>
+        <?php
+            }
+        ?>
+    </ul>
 </body>
 </html>
+<?php
+    }
+?>
