@@ -107,7 +107,7 @@
         ?>
         <ol>
             <?php
-                include_once 'models/grado.php';
+                include_once 'entidades/grado.php';
                 foreach($this->grados as $row ){
                     $grado = new Grado();
                     $grado = $row; 
@@ -119,7 +119,7 @@
                 ?>
                 <ul>
                     <?php
-                        include_once 'models/curso_has_grado.php';
+                        include_once 'entidades/curso_has_grado.php';
                         foreach($this->cursos_has_grados as $row){
                             $curso_has_grado = new curso_has_grado();
                             $curso_has_grado = $row; 

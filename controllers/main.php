@@ -29,7 +29,7 @@ class Main extends Controller{
             $result = $this->model->asignarsesion(['usuario' => $usuario]);
             $this->sesion->init();
             $this->sesion->add('usuario',$result);
-            header('location: '.constant('URL').'vermateria');
+            header('location: '.constant('URL').'perfil');
         }
     }
 }
