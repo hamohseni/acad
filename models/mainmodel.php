@@ -27,16 +27,6 @@ class mainModel extends Model{
             return false;
         }
     }
-    public function asignarsesion($datos){
-        try{
-            $query = $this->db->connect()->prepare("SELECT per_identificacion FROM Persona WHERE per_identificacion=:usuario");
-            $query->execute(['usuario' => $datos['usuario']]);
-            $row= $query->fetch(PDO::FETCH_OBJ);
-            return $row->per_identificacion;
-        }catch(PDOException $e){
-            return [];
-        }
-    }
 
 
 

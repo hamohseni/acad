@@ -26,9 +26,8 @@ class Main extends Controller{
         }else if($this->model->comprobardatos(['usuario' => $usuario,'contrasena' => $contrasena]) <= 0) {
             echo 'La contrase&ntilde;a es incorrecta! Verif&iacute;cala e int&eacute;ntalo de nuevo.';
         }else{
-            $result = $this->model->asignarsesion(['usuario' => $usuario]);
             $this->sesion->init();
-            $this->sesion->add('usuario',$result);
+            $this->sesion->add('usuario',$usuario);
             header('location: '.constant('URL').'perfil');
         }
     }

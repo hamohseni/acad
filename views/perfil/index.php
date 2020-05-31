@@ -16,12 +16,23 @@
     <title>Document</title>
 </head>
 <body>
+    <div style="width:190px;">   
+        <a  style="text-decoration:none; ;"href="<?php echo constant('URL')?>perfil/editarinformacionpersonal">
+            <div style="background-color:blue; color:white;padding: 10px; border-radius:5px;width:190px;">
+                Editar Informacion Personal
+            </div>
+        </a>
+    </div><br>
+    <div style="width:190px;">   
+        <a  style="text-decoration:none; ;"href="<?php echo constant('URL')?>perfil/editarcontrasena">
+            <div style="background-color:blue; color:white;padding: 10px; border-radius:5px;width:190px;">
+                Cambiar Contraseña
+            </div>
+        </a>
+    </div>        
     <table>
-
-    
-
         <tr align="left">
-            <td rowspan="10"><img src="public/imgs/usuarios/<?php echo $Persona->imagen;?>" style="width: 250px;height: 250px;"></td>
+            <td rowspan="10"><img src="public/imgs/perfil/<?php echo $Persona->identificacion;?>/<?php echo $Persona->imagen;?>" style="width: 250px;height: 250px;"></td>
         </tr>
         <tr align="left">
             <td><b>Nombre</b>:</td>
@@ -48,7 +59,7 @@
             <td><?php echo $Persona->ingreso;?></td>
         </tr>
         <tr align="left">
-            <td><b> <?php echo $Persona->tipodocumento;?></b>:</td><td>
+            <td><b><?php echo $Persona->tipodocumento;?></b>:</td>
             <td><?php echo $Persona->identificacion;?></td>
         </tr>
         <tr align="left">
