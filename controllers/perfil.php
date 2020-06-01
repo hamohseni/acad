@@ -92,69 +92,135 @@ class Perfil extends Controller{
         $permisoactualizar = $this->model->getpermisocambiardatos($sesiones,23);
         $this->view->permisoactualizar = $permisoactualizar;
         $identificacion = $this->sesion->get('usuario');
-        $nombre= $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $identificacionnueva = $_POST['identificacion'];
-        $telefono   = $_POST['telefono'];
-        $celular = $_POST['celular'];
-        $direccion = $_POST['direccion'];
-        $correo = $_POST['correo'];
-        $pais = $_POST['pais'];
-        $ciudad = $_POST['ciudad'];
-        $nacimiento = $_POST['nacimiento'];
-        $tipodocumento = $_POST['tipodocumento'];
-        $uploadedfileload="true";
-        $uploadedfile_size=$_FILES['uploadedfile']['size'];
-        if ($_FILES['uploadedfile']['size']>5242880){
-            $mensaje="La a foto es demasiado pesada y no se subió al servidor, el peso máximo son 5MB, para resubirla selecciona el producto creado y haz clic en editar.";
-            $uploadedfileload="false";
-        }
-        if (!($_FILES['uploadedfile']['type'] =="image/jpeg" OR $_FILES['uploadedfile']['type'] =="image/gif" OR $_FILES['uploadedfile']['type'] =="image/png")){
-            $mensaje="No se selecccionó ninguna foto o ésta tiene un formato no válido y no se subió al servidor, debe ser .jpg .png o .gif, para resubirla selecciona el producto creado y haz clic en editar.";
-            $uploadedfileload="false";
-        }
-        $file_name=$_FILES['uploadedfile']['name'];
-        $add="public/imgs/perfil/$identificacionnueva/$file_name";
-        $nombreimagen="$file_name";
-        if($nombre==NULL | $apellido==NULL | $telefono==NULL | $celular==NULL | $direccion==NULL | $correo==NULL | $pais==NULL | $ciudad==NULL | $nacimiento== NULL | $tipodocumento==NULL){
-            $this->view->mensaje = "Todos los campos no estan completos";
-        }elseif($this->model->actualizarinformacion(['nombre' => $nombre,'apellido' => $apellido,'identificacionnueva' => $identificacionnueva,'pais' => $pais,'ciudad' => $ciudad,'nacimiento' => $nacimiento,'tipodocumento' => $tipodocumento,'telefono' => $telefono,'celular'=>$celular,'direccion'=>$direccion,'correo'=>$correo,'identificacion'=>$identificacion])){
-            $guardar = rename("public/imgs/perfil/".$identificacion."", "public/imgs/perfil/".$_POST["identificacion"]."");
-                if($uploadedfileload=="true"){
-                    if(move_uploaded_file ($_FILES['uploadedfile']['tmp_name'], $add)){
-                    //Nada XD
-                    }else{
-                        echo "<p><b><font color='red'>Error al subir la foto, inténtelo más tarde nuevamente. <small>Posiblemente el servidor no se encontraba listo o se debe a un error de permisos chmod de los directorios. Si el problema persiste contacte al programador. Si usted no es el administrador por favor muéstrele este mensaje de error.</small></font></b></p>";
-                    }
-                    if($this->model->actualizarinformacionimagen(['imagen' => $nombreimagen,'identificacion' => $identificacionnueva])){
-
-                    }
-                }
-                if($uploadedfileload=="false"){
-                    $nombreimagen="";
-                } 
-            $this->sesion->remove('usuario');
-            $this->sesion->close();
-            $this->sesion->init();
-            $this->sesion->add('usuario',$identificacionnueva);
-            $persona = new Persona();
-            $persona->nombre = $nombre;
-            $persona->apellido = $apellido;
-            $persona->identificacion = $identificacionnueva;
-            $persona->pais = $pais;
-            $persona->ciudad = $ciudad;
-            $persona->nacimiento = $nacimiento;
-            $persona->telefono = $telefono;
-            $persona->direccion = $direccion;
-            $persona->celular = $celular;
-            $persona->correo = $correo;
-            $persona->tipodocumento = $tipodocumento;
-            $this->view->persona = $persona;
-            $this->view->mensaje = "Alumno actualizado correctamente";
+        if($this->model->getpermisocambiardatos($sesiones,23)==0){
+            exit("No se puede realizar esta accion.");
         }else{
-            $this->view->mensaje = "No se pudo actualizar al alumno";
+            if(isset($_POST['nombre']) ){
+                $nombre = $_POST['nombre'];
+            }else{
+                $nombre = $this->model->getdatosunico($sesiones,'per_nombre');
+            }
+            if(isset($_POST['apellido']) ){
+                $apellido = $_POST['apellido'];
+            }else{
+                $apellido = $this->model->getdatosunico($sesiones,'per_apellido');
+            }
+            if(isset($_POST['identificacionnueva']) ){
+                $identificacionnueva = $_POST['identificacionnueva'];
+            }else{
+                $identificacionnueva = $this->model->getdatosunico($sesiones,'per_identificacion');
+            }
+            if(isset($_POST['telefono']) ){
+                $telefono = $_POST['telefono'];
+            }else{
+                $telefono = $this->model->getdatosunico($sesiones,'per_telefono');
+            }
+            if(isset($_POST['celular']) ){
+                $celular = $_POST['celular'];
+            }else{
+                $celular = $this->model->getdatosunico($sesiones,'per_celular');
+            }
+            if(isset($_POST['direccion']) ){
+                $direccion = $_POST['direccion'];
+            }else{
+                $direccion = $this->model->getdatosunico($sesiones,'per_direccion');
+            }
+            if(isset($_POST['correo']) ){
+                $correo = $_POST['correo'];
+            }else{
+                $correo = $this->model->getdatosunico($sesiones,'per_correo');
+            }
+            if(isset($_POST['pais']) ){
+                $pais = $_POST['pais'];
+            }else{
+                $pais = $this->model->getdatosunico($sesiones,'per_pais');
+            }
+            if(isset($_POST['ciudad']) ){
+                $ciudad = $_POST['ciudad'];
+            }else{
+                $ciudad = $this->model->getdatosunico($sesiones,'per_ciudad');
+            }
+            if(isset($_POST['nacimiento']) ){
+                $nacimiento = $_POST['nacimiento'];
+            }else{
+                $nacimiento = $this->model->getdatosunico($sesiones,'per_nacimiento');
+            }
+            if(isset($_POST['tipodocumento']) ){
+                $tipodocumento = $_POST['tipodocumento'];
+            }else{
+                $tipodocumento = $this->model->getdatosunico($sesiones,'per_tipo_documento');
+            }
+            if(($this->model->getpermisocambiardatos($sesiones,13))==1){
+                $uploadedfileload="true";
+                $uploadedfile_size=$_FILES['uploadedfile']['size'];
+                if ($_FILES['uploadedfile']['size']>5242880){
+                    $mensaje="La a foto es demasiado pesada y no se subió al servidor, el peso máximo son 5MB, para resubirla selecciona el producto creado y haz clic en editar.";
+                    $uploadedfileload="false";
+                }
+                if (!($_FILES['uploadedfile']['type'] =="image/jpeg" OR $_FILES['uploadedfile']['type'] =="image/gif" OR $_FILES['uploadedfile']['type'] =="image/png")){
+                    $mensaje="No se selecccionó ninguna foto o ésta tiene un formato no válido y no se subió al servidor, debe ser .jpg .png o .gif, para resubirla selecciona el producto creado y haz clic en editar.";
+                    $uploadedfileload="false";
+                }
+                $file_name=$_FILES['uploadedfile']['name'];
+                $add="public/imgs/perfil/$identificacionnueva/$file_name";
+                $nombreimagen="$file_name";
+            }
+            
+            if($nombre==NULL | $apellido==NULL | $telefono==NULL | $celular==NULL | $direccion==NULL | $correo==NULL | $pais==NULL | $ciudad==NULL | $nacimiento== NULL | $identificacionnueva==NULL | $tipodocumento==NULL){
+                $this->view->mensaje = "Todos los campos no estan completos";
+                $persona = new Persona();
+                $persona->nombre = $nombre;
+                $persona->apellido = $apellido;
+                $persona->identificacion = $identificacionnueva;
+                $persona->pais = $pais;
+                $persona->ciudad = $ciudad;
+                $persona->nacimiento = $nacimiento;
+                $persona->telefono = $telefono;
+                $persona->direccion = $direccion;
+                $persona->celular = $celular;
+                $persona->correo = $correo;
+                $persona->tipodocumento = $tipodocumento;
+                $this->view->persona = $persona;
+            }elseif($this->model->actualizarinformacion(['nombre' => $nombre,'apellido' => $apellido,'identificacionnueva' => $identificacionnueva,'pais' => $pais,'ciudad' => $ciudad,'nacimiento' => $nacimiento,'tipodocumento' => $tipodocumento,'telefono' => $telefono,'celular'=>$celular,'direccion'=>$direccion,'correo'=>$correo,'identificacion'=>$identificacion])){
+                $guardar = rename("public/imgs/perfil/".$identificacion."", "public/imgs/perfil/".$identificacionnueva."");
+                    if(($this->model->getpermisocambiardatos($identificacionnueva,13))==1){
+                        if($uploadedfileload=="true"){
+                            if(move_uploaded_file ($_FILES['uploadedfile']['tmp_name'], $add)){
+                            //Nada XD
+                            }else{
+                                echo "<p><b><font color='red'>Error al subir la foto, inténtelo más tarde nuevamente. <small>Posiblemente el servidor no se encontraba listo o se debe a un error de permisos chmod de los directorios. Si el problema persiste contacte al programador. Si usted no es el administrador por favor muéstrele este mensaje de error.</small></font></b></p>";
+                            }
+                            if($this->model->actualizarinformacionimagen(['imagen' => $nombreimagen,'identificacion' => $identificacionnueva])){
+
+                            }
+                        }
+                        if($uploadedfileload=="false"){
+                            $nombreimagen="";
+                        }
+                    }
+                $this->sesion->remove('usuario');
+                $this->sesion->close();
+                $this->sesion->init();
+                $this->sesion->add('usuario',$identificacionnueva);
+                $persona = new Persona();
+                $persona->nombre = $nombre;
+                $persona->apellido = $apellido;
+                $persona->identificacion = $identificacionnueva;
+                $persona->pais = $pais;
+                $persona->ciudad = $ciudad;
+                $persona->nacimiento = $nacimiento;
+                $persona->telefono = $telefono;
+                $persona->direccion = $direccion;
+                $persona->celular = $celular;
+                $persona->correo = $correo;
+                $persona->tipodocumento = $tipodocumento;
+                $this->view->persona = $persona;
+                $this->view->mensaje = "Alumno actualizado correctamente";
+            }else{
+                $this->view->mensaje = "No se pudo actualizar al alumno";
+            }
+            $this->view->render('perfil/cambiarinformacionpersonal');
         }
-        $this->view->render('perfil/cambiarinformacionpersonal');
     }
     public function actualizarcontrasena(){
         $identificacion = $this->sesion->get('usuario');
@@ -176,10 +242,6 @@ class Perfil extends Controller{
         } 
         $this->view->render('perfil/cambiarcontrasena');
     }
-
-
-
-
 }
 
 ?>

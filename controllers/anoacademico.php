@@ -37,7 +37,7 @@ class anoacademico extends Controller{
             $mensaje ="F";
         }
         $this->view->mensaje = $mensaje;
-        $this->render();
+        $this->view->render();
         
     }
     function registrarPeriodo(){

@@ -74,7 +74,7 @@
             if(($this->permisoidentificacion)==1){
         ?>
         <label for="">Identificacion</label>
-        <input type="text" name="identificacion" value="<?php echo $this->persona->identificacion; ?>"><br><br>
+        <input type="text" name="identificacionnueva" value="<?php echo $this->persona->identificacion; ?>"><br><br>
         <?php
             }
             include_once 'entidades/persona_has_permiso.php'; 

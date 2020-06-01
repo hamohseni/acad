@@ -58,7 +58,6 @@ class personasModel extends Model{
             $row = $query->fetch(PDO::FETCH_OBJ);
             $result = $row->per_perm_estado;
             return $result;
-            echo $result;
         }catch(PDOException $e){
             echo "no se pudo";
             return [];

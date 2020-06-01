@@ -72,6 +72,20 @@ class perfilModel extends Model{
             return [];
         }
     }
+    public function getdatosunico($datos,$columna){
+        try{
+
+            $query = $this->db->connect()->prepare("SELECT * FROM Persona WHERE per_identificacion=:identificacion");
+            $query->execute(['identificacion' => $datos]);
+            $row = $query->fetch(PDO::FETCH_OBJ);
+            $result = $row->$columna;
+            echo $result;
+            return $result;
+        }catch(PDOException $e){
+            echo "no se pudo";
+            return [];
+        }
+    }
 
     public function getdatospersonales($datos){
         $items = [];
