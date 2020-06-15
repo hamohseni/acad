@@ -14,7 +14,7 @@
 <body>
     <h1>Crear Nivel<?php echo $this->mensaje;?></h1>
     
-    <form enctype="multipart/form-data" method="post" action="<?php echo constant('URL');?>distribucion/registrarNivel">
+    <form method="post" action="<?php echo constant('URL');?>distribucion/registrarNivel">
         <input  type="text" name="nombre" placeholder="Nombre"/><br><br>
         <select name="estado" >
             <option value="1">Activo</option>
@@ -26,7 +26,7 @@
     </form>
     <h1>Crear Grado<?php echo $this->mensaje;?></h1>
     
-    <form enctype="multipart/form-data" method="post" action="<?php echo constant('URL');?>distribucion/registrarGrado">
+    <form  method="post" action="<?php echo constant('URL');?>distribucion/registrarGrado">
         <select name="nivel" >
             <option value="NULL">--Nivel--</option>
             <?php
@@ -52,7 +52,7 @@
 
     <h1>Crear Curso<?php echo $this->mensaje;?></h1>
     
-    <form enctype="multipart/form-data" method="post" action="<?php echo constant('URL');?>distribucion/registrarCurso">
+    <form method="post" action="<?php echo constant('URL');?>distribucion/registrarCurso">
         <input  type="text" name="nombre" placeholder="Nombre"/><br><br>
         <select name="estado" >
             <option value="1">Activo</option>
@@ -65,7 +65,7 @@
 
     <h1>Asignar Curso a Grado<?php echo $this->mensaje;?></h1>
     
-    <form enctype="multipart/form-data" method="post" action="<?php echo constant('URL');?>distribucion/asignarCurso">
+    <form method="post" action="<?php echo constant('URL');?>distribucion/asignarCurso">
         <select name="grado" >
             <option value="NULL">--Grado--</option>
             <?php

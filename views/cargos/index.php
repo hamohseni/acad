@@ -16,7 +16,7 @@
         <?php echo $this->mensaje;?><br><br>
         <label>Cargo</label>
         <input type="text" name="cargo"><br><br>
-        <input type="submit" value="Crear">
+        <input type="submit" name="crear" value="Crear">
     </form>
 </body>
 </html>

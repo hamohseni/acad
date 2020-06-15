@@ -29,13 +29,17 @@ class asignacionmateria extends Controller{
     }
 
     function asignarGradoAsignatura(){
-        $grado = $_POST['grado'];
-        $asignatura = $_POST['asignatura'];
-        $mensaje ="";
-        if($this->model->insertGrado_has_Asignatura(['grado' => $grado,'asignatura' => $asignatura])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $grado = $_POST['grado'];
+            $asignatura = $_POST['asignatura'];
+            $mensaje ="";
+            if($this->model->insertGrado_has_Asignatura(['grado' => $grado,'asignatura' => $asignatura])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            $mensaje ="Por favor utilice el formulario";
         }
         $this->view->mensaje = $mensaje;
         $this->render();

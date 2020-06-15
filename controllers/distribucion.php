@@ -31,54 +31,72 @@ class distribucion extends Controller{
     }
 
     function registrarNivel(){
-        $nombre = $_POST['nombre'];
-        $estado = $_POST['estado'];
-        $mensaje ="";
-        if($this->model->insertnivel(['nombre' => $nombre,'estado' => $estado])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $nombre = $_POST['nombre'];
+            $estado = $_POST['estado'];
+            $mensaje ="";
+            if($this->model->insertnivel(['nombre' => $nombre,'estado' => $estado])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            $mensaje = "Porfavor utilice el formulario";
         }
+        
         $this->view->mensaje = $mensaje;
         $this->render();
         
     }
     function registrarGrado(){
-        $nivel = $_POST['nivel'];
-        $nombre = $_POST['nombre'];
-        $estado = $_POST['estado'];
-        $mensaje ="";
-        if($this->model->insertgrado(['nombre' => $nombre,'nivel' => $nivel,'estado' => $estado])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $nivel = $_POST['nivel'];
+            $nombre = $_POST['nombre'];
+            $estado = $_POST['estado'];
+            $mensaje ="";
+            if($this->model->insertgrado(['nombre' => $nombre,'nivel' => $nivel,'estado' => $estado])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            $mensaje = "Porfavor utilice el formulario";
         }
         $this->view->mensaje = $mensaje;
         $this->render();
         
     }
     function registrarCurso(){
-        $nombre = $_POST['nombre'];
-        $estado = $_POST['estado'];
-        $mensaje ="";
-        if($this->model->insertcurso(['nombre' => $nombre,'estado' => $estado])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $nombre = $_POST['nombre'];
+            $estado = $_POST['estado'];
+            $mensaje ="";
+            if($this->model->insertcurso(['nombre' => $nombre,'estado' => $estado])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            $mensaje = "Porfavor utilice el formulario";
         }
+
         $this->view->mensaje = $mensaje;
         $this->render();
         
     }
     function asignarCurso(){
-        $grado = $_POST['grado'];
-        $curso = $_POST['curso'];
-        $estado = $_POST['estado'];
-        $mensaje ="";
-        if($this->model->insertCurso_has_grado(['grado' => $grado,'curso' => $curso,'estado' => $estado])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $grado = $_POST['grado'];
+            $curso = $_POST['curso'];
+            $estado = $_POST['estado'];
+            $mensaje ="";
+            if($this->model->insertCurso_has_grado(['grado' => $grado,'curso' => $curso,'estado' => $estado])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            $mensaje = "Porfavor utilice el formulario";
         }
         $this->view->mensaje = $mensaje;
         $this->render();

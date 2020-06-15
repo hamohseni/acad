@@ -5,28 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gestion Academica</title>
         <!--===============================================================================================-->
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/vendor/bootstrap/css/bootstrap.min.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
         <!--===============================================================================================-->
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/vendor/animate/animate.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/vendor/animate/animate.css">
         <!--===============================================================================================-->	
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/vendor/css-hamburgers/hamburgers.min.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/vendor/css-hamburgers/hamburgers.min.css">
         <!--===============================================================================================-->
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/vendor/select2/select2.min.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/vendor/select2/select2.min.css">
         <!--===============================================================================================-->
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/CSS/u_login.css">
-        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/CSS/login.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/css/u_login.css">
+        	<link rel="stylesheet" type="text/css" href="<?php echo constant('URL');?>public/Login/css/login.css">
         <!--===============================================================================================-->
     </head>
     <body>
+   
         <div>
-            <div class="container-login100" style="background-image: url('<?php echo constant('URL');?>public/imgs/bg-01.jpg');">
+            <div class="container-login100" style="background-image: url('<?php echo constant('URL');?>public/imgs/Login/bg-01.jpg');">
+                 <?php echo $this->mensaje;?>
                 <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="<?php echo constant('URL');?>public/imgs/img-01.png" alt="IMG">
+                        <img src="<?php echo constant('URL');?>public/imgs/Login/img-01.png" alt="IMG">
                     </div>
-                    <?php echo $this->mensaje;?>
+                                        
                     <form class="login100-form validate-form"  method="post" action="<?php echo constant('URL');?>main/ingresar">
                         <span class="login100-form-title">
                             Login
@@ -73,21 +75,21 @@
     </body>
 
 	<!--===============================================================================================-->	
-	<script src="<?php echo constant('URL');?>public/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?php echo constant('URL');?>public/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    	<script src="<?php echo constant('URL');?>public/vendor/bootstrap/js/popper.js"></script>
-    	<script src="<?php echo constant('URL');?>public/vendor/bootstrap/js/bootstrap.min.js"></script>
+    	<script src="<?php echo constant('URL');?>public/Login/vendor/bootstrap/js/popper.js"></script>
+    	<script src="<?php echo constant('URL');?>public/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    	<script src="<?php echo constant('URL');?>public/vendor/select2/select2.min.js"></script>
+    	<script src="<?php echo constant('URL');?>public/Login/vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
-    	<script src="<?php echo constant('URL');?>public/vendor/tilt/tilt.jquery.min.js"></script>
+    	<script src="<?php echo constant('URL');?>public/Login/vendor/tilt/tilt.jquery.min.js"></script>
     	<script >
     		$('.js-tilt').tilt({
     			scale: 1.1
     		})
     	</script>
     <!--===============================================================================================-->
-    	<script src="<?php echo constant('URL');?>public/js/main.js"></script>
+    	<script src="<?php echo constant('URL');?>public/Login/js/main.js"></script>
 
 </html>
 

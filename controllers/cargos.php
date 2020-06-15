@@ -22,17 +22,22 @@ class Cargos extends Controller{
     }
 
     function registrarCargo(){
-        $cargo = $_POST['cargo'];
-        $mensaje ="";
-        if($cargo==NULL){
-            $mensaje = "Es necesario que llene el nombre del cargo a crear";
-        }else{
-            if($this->model->insertcargo(['cargo' => $cargo])){
-                $mensaje = "Se creó correctamente";
+        if(isset($_POST['crear'])){
+            $cargo = $_POST['cargo'];
+            $mensaje ="";
+            if($cargo==NULL){
+                $mensaje = "Es necesario que llene el nombre del cargo a crear";
             }else{
-                $mensaje ="Hubo un error, intentelo nuevamente.";
+                if($this->model->insertcargo(['cargo' => $cargo])){
+                    $mensaje = "Se creó correctamente";
+                }else{
+                    $mensaje ="Hubo un error, intentelo nuevamente.";
+                }
             }
+        }else{
+            $mensaje = "Utilice el formulario";
         }
+        
         $this->view->mensaje = $mensaje;
         $this->render();
         

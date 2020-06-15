@@ -27,26 +27,34 @@ class verMateria extends Controller{
     }
 
     function registrarMateria(){
-        $nombre = $_POST['nombre'];
-        $mensaje ="";
-        if($this->model->insertmateria(['nombre' => $nombre])){
-            $mensaje = "Bien Hecho";
+        if(isset($_POST['crear'])){
+            $nombre = $_POST['nombre'];
+            $mensaje ="";
+            if($this->model->insertmateria(['nombre' => $nombre])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
         }else{
-            $mensaje ="F";
+            exit('Utilice el Formulario');
         }
         $this->view->mensaje = $mensaje;
         $this->render();
         
     }
     function registrarAsignatura(){
-        $materia = $_POST['materia'];
-        $nombre = $_POST['nombre'];
-        $rotativo = $_POST['rotativo'];
-        $mensaje ="";
-        if($this->model->insertasignatura(['nombre' => $nombre,'materia' => $materia,'rotativo' => $rotativo])){
-            $mensaje = "Bien Hecho";
-        }else{
-            $mensaje ="F";
+        if(isset($_POST['crear'])){
+            $materia = $_POST['materia'];
+            $nombre = $_POST['nombre'];
+            $rotativo = $_POST['rotativo'];
+            $mensaje ="";
+            if($this->model->insertasignatura(['nombre' => $nombre,'materia' => $materia,'rotativo' => $rotativo])){
+                $mensaje = "Bien Hecho";
+            }else{
+                $mensaje ="F";
+            }
+        }else{  
+            exit('Utilice el Formulario');
         }
         $this->view->mensaje = $mensaje;
         $this->render();

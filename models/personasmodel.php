@@ -9,8 +9,8 @@ class personasModel extends Model{
 
     public function insertpersona($datos){
         try{
-            $query = $this->db->connect()->prepare('INSERT INTO Persona (per_nombre,per_apellido,per_identificacion,per_telefono,per_celular,per_correo,per_codigo,per_direccion,per_pais,per_ciudad,per_nacimiento,per_ingreso,per_contrasena,per_imagen,per_tipo_documento) VALUES (:nombre,:apellido,:identificacion,:telefono,:celular,:correo,:codigo,:direccion,:pais,:ciudad,:nacimiento,:ingreso,:contrasena,:imagen,:tipodocumento)');
-            $query->execute(['nombre' => $datos['nombre'],'apellido' => $datos['apellido'],'identificacion' => $datos['identificacion'],'telefono' => $datos['telefono'],'celular' => $datos['celular'],'correo' => $datos['correo'],'codigo' => $datos['codigo'],'direccion' => $datos['direccion'],'pais' => $datos['pais'],'ciudad' => $datos['ciudad'],'nacimiento' => $datos['nacimiento'],'ingreso' => $datos['ingreso'],'contrasena' => $datos['contrasena'],'imagen' => $datos['imagen'],'tipodocumento' => $datos['tipodocumento']]);
+            $query = $this->db->connect()->prepare('INSERT INTO Persona (per_nombre,per_apellido,per_identificacion,per_telefono,per_celular,per_correo,per_codigo,per_direccion,per_pais,per_ciudad,per_nacimiento,per_ingreso,per_contrasena,per_imagen,per_tipo_documento,per_estado) VALUES (:nombre,:apellido,:identificacion,:telefono,:celular,:correo,:codigo,:direccion,:pais,:ciudad,:nacimiento,:ingreso,:contrasena,:imagen,:tipodocumento,:estado)');
+            $query->execute(['nombre' => $datos['nombre'],'apellido' => $datos['apellido'],'identificacion' => $datos['identificacion'],'telefono' => $datos['telefono'],'celular' => $datos['celular'],'correo' => $datos['correo'],'codigo' => $datos['codigo'],'direccion' => $datos['direccion'],'pais' => $datos['pais'],'ciudad' => $datos['ciudad'],'nacimiento' => $datos['nacimiento'],'ingreso' => $datos['ingreso'],'contrasena' => $datos['contrasena'],'imagen' => $datos['imagen'],'tipodocumento' => $datos['tipodocumento'],'estado' => $datos['estado']]);
 
             return true;
         }catch(PDOException $e){
